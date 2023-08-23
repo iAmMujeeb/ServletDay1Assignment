@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
 </head>
 <body>
 <form action="LoginServlet" method="post">
-  UserName:<input type="text" name="user" />
-  <br>
-  Password:<input type="password" name="password" />
-  <br>
-  <input type="submit" value="Login">
+  <div>
+<!--    <label for="name">First Name:</label>-->
+    User Name: <input type="text" id="name" name="user" name="">
+    <error-output class="name-error" for = "name"></error-output><br>
+  </div>
+
+  <div>
+    <label for="pwd">Password:</label>
+    <input type="password" id="pwd" name="password" pwd="">
+    <error-output class="pwd-error" for = "pwd"></error-output><br>
+  </div>
+    <input type="submit" value="Login">
+
 </form>
+
+<script>
+const name = document.querySelector('#name');
+const nameError = document.querySelector('.name-error')
+name.addEventListener('input', function(){
+  let nameRegex = RegExp('^[A-Z][a-z]{2,8}$');
+    if(nameRegex.test(name.value))
+    nameError.textContent="";
+    else nameError.textContent = "Name is incorrect";
+});
+
+const password = document.querySelector('#pwd');
+const passwordError = document.querySelector('.pwd-error')
+password.addEventListener('input', function(){
+  let passwordRegex = RegExp('^[a-zA-Z0-9!@#$%^&*]{8}$');
+    if(passwordRegex.test(password.value))
+    passwordError.textContent="";
+    else passwordError.textContent = "Password is incorrect";
+});
+</script>
+
 </body>
 </html>

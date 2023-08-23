@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         Matcher matcher1 = pattern1.matcher(password);
 
         if (matcher.matches() && matcher1.matches()) {
-            request.setAttribute("user", "admin");
+            request.setAttribute("user",user);
             request.getRequestDispatcher("LoginSuccess.jsp").forward(request, response);
         } else {
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/Login.html");
